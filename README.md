@@ -3,7 +3,6 @@
 1. Unite App
 
 
-
 •	Description:  A responsive app to plan personalized event/party/meetings with a group of your closest friends meeting all their individual preferences based on location, type of restaurants, distance, etc.
 o	The app will have mainly the following features: 
 	Add friends - Invite them using just a unique code
@@ -38,7 +37,6 @@ o	Using smart search, multiple recipes with video or links will be suggested to 
   
  
 4. Traffic Sign Recognition using Machine Learning Models
-
 
 
 •	Description: There are several different types of traffic signs like speed limits, no entry, traffic signals, turn left or right, children crossing, no passing of heavy vehicles, etc. Traffic signs classification is the process of identifying which class a traffic sign belongs to and building a deep neural network model that can classify traffic signs present in the image into different categories. The datasets from each class are used to train the algorithm. With this model, we are able to read and understand traffic signs which are a very important task for all autonomous vehicles.
