@@ -13,7 +13,7 @@ The app will have mainly the following features:
 ####	Goal
 In modern cities, arranging an event or even a simple get together for a group of friends/people can be difficult tasks due to the issue of logistics involved like availability of person, time, location, the distance involved from different individuals and coordination for traveling. This app is focused on solving that problem and making it convenient for people to arrange anything.
 #### Business Perspective
-- Can be monetized by adding paid restaurant or events ads based on preferences
+Can be monetized by adding paid restaurant or events ads based on preferences
 #### Technology Stack
 Maps API(Google/Open Source), Web Technologies - HTML5/React, Database - MySQL/MongoDB
  
