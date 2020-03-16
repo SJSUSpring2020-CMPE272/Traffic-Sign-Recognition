@@ -47,7 +47,7 @@ Python, TensorFlow, Machine Learning Models, Maps API
   
  
 ## 4. Traffic Sign Recognition using Machine Learning Models
-
+# Approved
 
 #### Description
 There are several different types of traffic signs like speed limits, no entry, traffic signals, turn left or right, children crossing, no passing of heavy vehicles, etc. Traffic signs classification is the process of identifying which class a traffic sign belongs to and building a deep neural network model that can classify traffic signs present in the image into different categories. The datasets from each class are used to train the algorithm. With this model, we are able to read and understand traffic signs which are a very important task for all autonomous vehicles.
