@@ -1,5 +1,3 @@
-# ProjectGroup-12
-
 ## Traffic Sign Recognition using Machine Learning Models
 
 #### Description
