@@ -7,4 +7,4 @@ There are several different types of traffic signs like speed limits, no entry, 
 Detecting and recognizing emerging traffic for the smooth functioning of autonomous vehicles
 
 #### Technology Stack
-Image Classification, Python, Keras, Scikit-Learn, Pandas, Matplotlib, Machine Learning Model (CNN)
+Python, Tensorflow, Keras, Scikit-Learn, Pandas, Matplotlib, Convoluted Neural Network Machine Learning Model(CNN),Image Classification
