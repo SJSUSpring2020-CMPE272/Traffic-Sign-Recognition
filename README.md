@@ -10,6 +10,7 @@ Detecting and recognizing emerging traffic for the smooth functioning of autonom
 Python, Tensorflow, Keras, Scikit-Learn, Pandas, Matplotlib, Convoluted Neural Network Machine Learning Model(CNN),Image Classification
 
 #### Architecture:
+![Design Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/arch1.jpeg)
 
 
 
