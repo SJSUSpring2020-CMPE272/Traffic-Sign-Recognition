@@ -26,7 +26,7 @@ Detecting and recognizing emerging traffic signs for the smooth functioning of a
 
 ## Architecture Diagram:
 
-![Project Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/CompleteArchDiagram.png)
+![Project Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/Arch.jpeg)
  
 ![CNN Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/arch1.jpeg)
 
