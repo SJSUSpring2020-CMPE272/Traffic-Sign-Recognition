@@ -25,6 +25,9 @@ In our model, the datasets containing images of different classes are used to tr
 Detecting and recognizing emerging traffic signs for the smooth functioning of autonomous vehicles
 
 ## Architecture Diagram:
+
+![Project Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/CompleteArchDiagram.png)
+ 
 ![CNN Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/arch1.jpeg)
 
 ![Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/arch2.jpeg)
