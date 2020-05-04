@@ -16,7 +16,7 @@ In our model, the dataset containing images of different classes are used to tra
 
 ### CNN Model Architecture:
 
-We are using the GTSRB dataset. The dataset is split into training, test and validation sets, with the following characteristics:
+We are using the [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset) dataset. The dataset is split into training, test and validation sets, with the following characteristics:
 * Images are 32 (width) x 32 (height) x 3 (RGB color channels)
 * Training set is composed of 39209 images
 * Validation set is composed of 10104 images
