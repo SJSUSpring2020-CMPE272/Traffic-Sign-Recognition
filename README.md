@@ -1,6 +1,6 @@
-## Traffic Sign Recognition using Convolutional Neural Network
+# Traffic Sign Recognition using Convolutional Neural Network
 
-#### Convolutional Neural Networks
+## Convolutional Neural Networks
 
 The image processing in CNNs is done by processing input images through following layers:
 
@@ -16,21 +16,21 @@ ReLU (Rectified Linear Units) indicates real non-linear function defined by ReLU
 #### Fully-Connected layer
 The fully-connected layer is always the last layer of a neural network. This layer receives an input vector and produces a new output vector. In order to perform this operation, it applies a linear combination and then possibly an activation function to the input values received. The fully-connected layer classifies the image as an input to the network. It returns a vector of size N, where N is the number of classes in our image classification problem. Each element of the vector indicates the probability for the input image to belong to a class.
 
-#### Abstract
+## Abstract
 There are several different types of traffic signs like speed limits, no entry, traffic signals, turn left or right, children crossing, no passing of heavy vehicles, etc. Traffic signs classification is the process of identifying which class a traffic sign belongs to and building a deep neural network model that can classify traffic signs present in the image into different categories. 
 
 In our model, the datasets containing images of different classes are used to train the algorithm. The model is used to test the data for accuracy and is saved. This model is used to predict the class of the image. The user sends the image through a frontend interface through a REST API POST request. The request is directed to the server and processed. The class of the image is predicted and displayed to the user on the dashboard. With this model, we are able to read and understand traffic signs which are a very important task for all autonomous vehicles.
 
-#### Goal
+## Goal
 Detecting and recognizing emerging traffic signs for the smooth functioning of autonomous vehicles
 
-#### Architecture Diagram:
+## Architecture Diagram:
 ![CNN Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/arch1.jpeg)
 
 ![Architecture Diagram](https://github.com/SJSUSpring2020-CMPE272/Traffic-Sign-Recognition/blob/master/images/arch2.jpeg)
 
 
-#### Technology Stack
+## Technology Stack
 1. Frontend : React
 2. Backend  : Flask, Python
 3. Machine Learning Model : Convolutional Neural Networks
