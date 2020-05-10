@@ -5,6 +5,7 @@ import flask
 import io 
 
 app = flask.Flask(__name__) 
+CORS(app)
 model = None
 
 @app.route('/')
