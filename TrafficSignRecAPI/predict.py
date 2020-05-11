@@ -4,10 +4,12 @@ import numpy
 from flask_cors import CORS
 import flask
 import io 
+import numpy as np
 
 app = flask.Flask(__name__) 
 CORS(app)
-model = None
+#model = None
+model = load_model('TrafficSignRecModel.h5')
 
 @app.route('/')
 def hello():
@@ -79,15 +81,26 @@ def predict():
   
     if flask.request.method == "POST": 
         if flask.request.files.get("image"): 
+           
             image = flask.request.files["image"].read() 
             image = Image.open(io.BytesIO(image)) 
-  
+
             image = prepare_image(image) 
+            
             pred = model.predict_classes([image])[0]
+            predp = model.predict(image)
+            print('pred', predp)
+            x=max(predp)
+            y=max(x)
+           
+            print('pred prob', y)
+
             class_id = int(class_indices[pred])
             image_class = classes[class_id+1]
+            
 
             data["image_class"] = image_class
+            data["prob"] = str(y)
   
     return flask.jsonify(data)
 
