@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Card, CardDeck, Form } from 'react-bootstrap';
+import { Card, CardDeck, Form ,CardColumns} from 'react-bootstrap';
 import car from '../highway.jpg';
 import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
@@ -16,7 +16,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
+import HomeIcon from '@material-ui/icons/Home';
 import { Chart, Dataset } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
@@ -39,6 +39,14 @@ class Dashboard extends Component {
        // if (e.target.id === 'Results') {
             this.setState({ showResults: true });
             console.log('uploaded FIles',this.state.uploadedFiles);
+       // }
+    } 
+    
+    showHome = (e) => {
+        console.log('e', e.target.id);
+       // if (e.target.id === 'Results') {
+            this.setState({ showResults: false });
+            //console.log('uploaded FIles',this.state.uploadedFiles);
        // }
     }
 
@@ -223,7 +231,7 @@ class Dashboard extends Component {
 
 
                 {this.state.showResults &&
-                    <CardDeck style={{ "margin-top": "5%", "margin-left": "15%", "margin-right": "auto" }}>
+                    <CardColumns style={{ "margin-top": "5%", "margin-left": "15%", "margin-right": "auto" }}>
                     {Object.entries(this.state.outputFiles).map(([key,value], index) => {
                         console.log('value',value);
                         return (
@@ -242,7 +250,7 @@ class Dashboard extends Component {
                             </Card>
                         )
                     })}
-                    </CardDeck>
+                    </CardColumns>
 
                 }
                 <div>
@@ -259,14 +267,10 @@ class Dashboard extends Component {
                                 <ListItemIcon><InboxIcon /> </ListItemIcon>
                                 <ListItemText primary={'Results'} />
                             </ListItem>
-
-
-                            {['Home', 'Results', 'Send email', 'Drafts'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
+                            <ListItem button id='Home' onClick={this.showHome} key={'Home'}>
+                                <ListItemIcon><HomeIcon /> </ListItemIcon>
+                                <ListItemText primary={'Home'} />
+                            </ListItem>
                         </List>
                         <Divider />
                     </Drawer>
