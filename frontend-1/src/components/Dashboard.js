@@ -217,7 +217,7 @@ class Dashboard extends Component {
                             <Card
                                 bg='dark'
                                 text='white'
-                                style={{ 'max-width': '30rem', 'max-height': '30rem' }}
+                                style={{ 'max-width': '25rem', 'max-height': '25rem' }}
                             >
                                 <Card.Header>Image Input</Card.Header>
                                 <Card.Body>
