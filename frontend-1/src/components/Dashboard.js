@@ -17,10 +17,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import InfoIcon from '@material-ui/icons/Info';
 import { Chart, Dataset } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-
+function importAll(r) {
+    return r.keys().map(r);
+  }
+  
+  const images = importAll(require.context('./TestDataset', false, /\.(png|jpe?g|svg)$/));
 class Dashboard extends Component {
     state = {
         selectedFile: "",
@@ -31,7 +37,10 @@ class Dashboard extends Component {
         predictionValues: [],
         noDataToggle: false,
         showResults: false,
-        outputFiles :[]
+        outputFiles :[],
+        showHome :false,
+        showDataSet :false,
+        showInfo : false
     };
 
     handleClick = (e) => {
@@ -42,10 +51,56 @@ class Dashboard extends Component {
        // }
     } 
     
+    showResult = (e) => {
+        console.log('e', e.target.id);
+       // if (e.target.id === 'Results') {
+            this.setState({
+                 showHome: false,
+                 showDataSet :false,
+                 showInfo : false,
+                 showResults: true
+                });
+            //console.log('uploaded FIles',this.state.uploadedFiles);
+       // }
+    }
+
     showHome = (e) => {
         console.log('e', e.target.id);
        // if (e.target.id === 'Results') {
-            this.setState({ showResults: false });
+            this.setState({ 
+                showHome: true,
+                showDataSet :false,
+                showInfo : false,
+                showResults: false
+            });
+            //console.log('uploaded FIles',this.state.uploadedFiles);
+       // }
+    }
+    
+    
+    showInfo = (e) => {
+        console.log('e', e.target.id);
+       // if (e.target.id === 'Results') {
+            this.setState({ 
+                showHome: false,
+                showDataSet :false,
+                showInfo : true,
+                showResults: false
+            
+            });
+            //console.log('uploaded FIles',this.state.uploadedFiles);
+       // }
+    }
+    
+    showDataSet = (e) => {
+        console.log('e', e.target.id);
+       // if (e.target.id === 'Results') {
+            this.setState({ 
+                showHome: false,
+                showDataSet :true,
+                showInfo : false,
+                showResults: false
+             });
             //console.log('uploaded FIles',this.state.uploadedFiles);
        // }
     }
@@ -74,12 +129,16 @@ class Dashboard extends Component {
 
                         // .//post(`http://54.177.173.161/trafficsignrecapi/predict`, data)
 
-                        .post(`http://127.0.0.1:5000/trafficsignrecapi/predict`, data)
+                        .post(`http://ec2-3-134-117-141.us-east-2.compute.amazonaws.com/trafficsignrecapi/predict`, data)
                         .then((res) => {
                             console.log(res);
                             console.log(res.data.image_class);
+                            let imageClassVar = res.data.image_class;
+                            if(res.data.prob * 100 < 50 ){
+                                imageClassVar = 'Image not recognized';
+                            }
                             this.setState({
-                                image_class: res.data.image_class,
+                                image_class:imageClassVar,
                                 prob: (res.data.prob * 100).toFixed(2),
                                 noDataToggle: true
                             });
@@ -106,9 +165,10 @@ class Dashboard extends Component {
         }
     };
     render() {
+        console.log('const',images);
         return (
             <Fragment>
-                {!this.state.showResults &&
+                {this.state.showHome &&
                     <div>
                         <div style={{ "margin-top": "5%" }} className="container" align="center">
                             <Typography variant="h3" gutterBottom>
@@ -240,12 +300,55 @@ class Dashboard extends Component {
                                 text='white'
                                 style={{ 'max-width': '18rem' }}
                             >
-                            <Card.Img variant="top" src={value.imgSrc} />
+                            <Card.Img variant="top" src={value.imgSrc} style={{ 'max-width': '25rem', 'max-height': '25rem' }}/>
                                 <Card.Body>
                                 <Divider/>
-                                Predicted Class: <strong>{value.image_class} </strong>
+                                <strong>{value.image_class} </strong>
                                     <Divider/>
-                                      Prediction Accuracy:  <strong>{value.prob}</strong>
+                                Accuracy:  <strong>{value.prob}</strong>
+                                </Card.Body>
+                            </Card>
+                        )
+                    })}
+                    </CardColumns>
+
+                }
+
+                {this.state.showDataSet &&
+                    <CardColumns style={{ "margin-top": "5%", "margin-left": "15%", "margin-right": "auto" }}>
+                    {images.map((value, index) => {
+                        console.log('value',value);
+                        return (
+                            <Card
+                                bg='dark'
+                                text='white'
+                                style={{ 'max-width': '18rem' }}
+                            >
+                            <Card.Img variant="top" src={value} style={{ 'max-width': '25rem', 'max-height': '25rem' }}/>
+
+                            </Card>
+                            )
+                    })}
+                    </CardColumns>
+
+                }
+
+                {this.state.showInfo &&
+                    <CardColumns style={{ "margin-top": "5%", "margin-left": "15%", "margin-right": "auto" }}>
+                    {Object.entries(this.state.outputFiles).map(([key,value], index) => {
+                        console.log('value',value);
+                        return (
+                            <Card
+                                bg='dark'
+                                text='white'
+                                style={{ 'max-width': '18rem' }}
+                            >
+                            <Card.Img variant="top" src={value.imgSrc} style={{ 'max-width': '25rem', 'max-height': '25rem' }}/>
+                                <Card.Body>
+                                <Divider/>
+                                <strong>{value.image_class} </strong>
+                                    <Divider/>
+                                Accuracy:  <strong>{value.prob}</strong>
                                 </Card.Body>
                             </Card>
                         )
@@ -263,13 +366,22 @@ class Dashboard extends Component {
                         <div />
                         <Divider />
                         <List>
-                            <ListItem button id='Results' onClick={this.handleClick} key={'Results'}>
-                                <ListItemIcon><InboxIcon /> </ListItemIcon>
-                                <ListItemText primary={'Results'} />
-                            </ListItem>
                             <ListItem button id='Home' onClick={this.showHome} key={'Home'}>
                                 <ListItemIcon><HomeIcon /> </ListItemIcon>
                                 <ListItemText primary={'Home'} />
+                            </ListItem>
+                            <ListItem button id='Results' onClick={this.showResult} key={'Results'}>
+                                <ListItemIcon><InboxIcon /> </ListItemIcon>
+                                <ListItemText primary={'Results'} />
+                            </ListItem>
+                           
+                            <ListItem button id='DataSet' onClick={this.showDataSet} key={'DataSet'}>
+                                <ListItemIcon><LibraryBooksIcon /> </ListItemIcon>
+                                <ListItemText primary={'Data Set'} />
+                            </ListItem>
+                            <ListItem button id='Info' onClick={this.showInfo} key={'Info'}>
+                                <ListItemIcon><InfoIcon /> </ListItemIcon>
+                                <ListItemText primary={'Info'} />
                             </ListItem>
                         </List>
                         <Divider />
