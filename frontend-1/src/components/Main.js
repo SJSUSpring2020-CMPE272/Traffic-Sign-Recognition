@@ -8,8 +8,8 @@ class Main extends Component {
     return (
    <div>
 
-        <Route path="/uploadPic" component={UploadPic} />
-        <Route exact path="/" component={Dashboard} />
+        {/*<Route path="/uploadPic" component={UploadPic} />*/}
+        <Route path="/" component={Dashboard} />
         
       
       </div>
