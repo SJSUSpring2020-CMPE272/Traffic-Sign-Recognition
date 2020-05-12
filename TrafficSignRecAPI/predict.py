@@ -8,8 +8,7 @@ import numpy as np
 
 app = flask.Flask(__name__) 
 CORS(app)
-#model = None
-model = load_model('TrafficSignRecModel.h5')
+model = None
 
 @app.route('/')
 def hello():
@@ -88,9 +87,8 @@ def predict():
             image = prepare_image(image) 
             
             pred = model.predict_classes([image])[0]
-            predp = model.predict(image)
-            print('pred', predp)
-            x=max(predp)
+            pred_prob = model.predict(image)
+            x=max(pred_prob)
             y=max(x)
            
             print('pred prob', y)
